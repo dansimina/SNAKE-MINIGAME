@@ -27,7 +27,7 @@ public class Panel extends JPanel {
 
         graphics.setColor(Color.WHITE);
 
-        if(!snake.isEmpty()) {
+        if(snake != null &&  !snake.isEmpty()) {
             for(Square square: snake) {
                 if(square.equals(snake.getLast())){
                     graphics.setColor(Color.GRAY);
