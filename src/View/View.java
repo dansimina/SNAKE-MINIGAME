@@ -30,4 +30,8 @@ public class View extends JFrame {
     public void setSnake(LinkedList<Square> snake) {
         gamePanel.setSnake(snake);
     }
+
+    public void setFood(Square food) {
+        gamePanel.setFood(food);
+    }
 }

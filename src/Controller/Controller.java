@@ -16,15 +16,10 @@ public class Controller {
     Timer loop;
     private View theView;
     private Model theModel;
-
-    int velocityX = 0;
-    int velocityY = 1;
-
     private ActionListener actionListener;
     private KeyListener keyListener;
-
-    Square head = new Square(5, 5);
     private LinkedList<Square> snake;
+    private Square food;
 
     public Controller(View theView, Model theModel) {
         this.theView = theView;
@@ -49,7 +44,13 @@ public class Controller {
             theModel.move();
             snake = theModel.getSnake();
             theView.setSnake(snake);
+            food = theModel.getFood();
+            theView.setFood(food);
             theView.getGamePanel().repaint();
+
+            if (theModel.isGameOver()) {
+                loop.stop();
+            }
         }
     }
 
@@ -62,8 +63,6 @@ public class Controller {
 
         @Override
         public void keyPressed(KeyEvent e) {
-            System.out.println("apasat");
-
             switch (e.getKeyCode()) {
                 case KeyEvent.VK_UP -> theModel.setDirection(Direction.UP);
                 case KeyEvent.VK_DOWN -> theModel.setDirection(Direction.DOWN);

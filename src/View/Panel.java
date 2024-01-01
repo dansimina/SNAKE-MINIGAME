@@ -5,20 +5,16 @@ import Model.Square;
 import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
-import java.util.Random;
 
 public class Panel extends JPanel {
     public static final int BOARD_SIZE = 500;
     public static final int SQARE_SIZE = 20;
     Square food;
-
     private LinkedList<Square> snake;
 
     public Panel() {
         setPreferredSize(new Dimension(BOARD_SIZE, BOARD_SIZE));
         setBackground(Color.BLACK);
-
-        food = new Square(10, 10);
     }
 
     public void paintComponent(Graphics graphics) {
@@ -32,19 +28,26 @@ public class Panel extends JPanel {
         graphics.setColor(Color.WHITE);
 
         if(!snake.isEmpty()) {
-            for(Square sqare: snake) {
-                graphics.fillRect(sqare.getX() * SQARE_SIZE, sqare.getY() * SQARE_SIZE, SQARE_SIZE, SQARE_SIZE);
+            for(Square square: snake) {
+                if(square.equals(snake.getLast())){
+                    graphics.setColor(Color.GRAY);
+                }
+                graphics.fillRect(square.getX() * SQARE_SIZE, square.getY() * SQARE_SIZE, SQARE_SIZE, SQARE_SIZE);
             }
         }
 
+        if(food != null) {
+            graphics.setColor(Color.WHITE);
+            graphics.fillOval(food.getX() * SQARE_SIZE, food.getY() * SQARE_SIZE, SQARE_SIZE, SQARE_SIZE);
+        }
 
-//        food.setX(new Random().nextInt(BOARD_SIZE / SQARE_SIZE));
-//        food.setY(new Random().nextInt(BOARD_SIZE / SQARE_SIZE));
-//        graphics.setColor(Color.RED);
-//        graphics.fillOval(food.getX() * SQARE_SIZE, food.getY() * SQARE_SIZE, SQARE_SIZE, SQARE_SIZE);
     }
 
     public void setSnake(LinkedList<Square> snake) {
         this.snake = snake;
+    }
+
+    public void setFood(Square food) {
+        this.food = food;
     }
 }
