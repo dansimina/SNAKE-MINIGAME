@@ -99,4 +99,19 @@ public class Model {
 
         this.direction = direction;
     }
+
+    public void restart() {
+        snake.clear();
+        snakeBody.clear();
+
+        gameOver = false;
+
+        snake.addFirst(new Square(5, 5));
+        snake.addFirst(new Square(5, 6));
+        snake.addFirst(new Square(5, 7));
+
+        food = new Square(20, 20);
+
+        direction = Direction.DOWN;
+    }
 }

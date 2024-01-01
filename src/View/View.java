@@ -34,4 +34,8 @@ public class View extends JFrame {
     public void setFood(Square food) {
         gamePanel.setFood(food);
     }
+
+    public void gameOver() {
+        JOptionPane.showMessageDialog(rootPane, "GAME OVER", "", 1);
+    }
 }

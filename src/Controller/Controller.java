@@ -50,6 +50,9 @@ public class Controller {
 
             if (theModel.isGameOver()) {
                 loop.stop();
+                theView.gameOver();
+                theModel.restart();
+                loop.start();
             }
         }
     }
