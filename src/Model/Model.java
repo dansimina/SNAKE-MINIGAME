@@ -49,9 +49,6 @@ public class Model {
         if (head.getY() >= MODEL_BOARD_SIZE)
             head.setY(0);
 
-        if(!snakeBody.isEmpty() && snakeBody.contains(head))
-            gameOver = true;
-
         if (head.compareTo(food) == 0)
         {
             food.setX(new Random().nextInt(MODEL_BOARD_SIZE));
@@ -66,6 +63,9 @@ public class Model {
             snakeBody.remove(snake.getFirst());
             snake.removeFirst();
         }
+
+        if(!snakeBody.isEmpty() && snakeBody.contains(head))
+            gameOver = true;
 
         snake.addLast(head);
         snakeBody.add(head);
