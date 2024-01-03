@@ -25,13 +25,15 @@ public class Panel extends JPanel {
             graphics.drawLine(0, i * SQARE_SIZE, BOARD_SIZE, i * SQARE_SIZE);
         }
 
-        graphics.setColor(Color.WHITE);
-
         if(snake != null &&  !snake.isEmpty()) {
             for(Square square: snake) {
                 if(square.equals(snake.getLast())){
                     graphics.setColor(Color.GRAY);
                 }
+                else {
+                    graphics.setColor(Color.WHITE);
+                }
+
                 graphics.fillRect(square.getX() * SQARE_SIZE, square.getY() * SQARE_SIZE, SQARE_SIZE, SQARE_SIZE);
             }
         }
